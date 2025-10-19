@@ -19,6 +19,12 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Black Friday Sketch | Exclusive Furniture Flash Sales 🔥",
   description: "Discover unbeatable Black Friday deals on luxury furniture. Limited time flash sales on sofas, tables, chairs and more. Don't miss out!",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
 };
 
 export default function RootLayout({

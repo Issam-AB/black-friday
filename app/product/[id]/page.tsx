@@ -128,12 +128,12 @@ export default function ProductPage() {
 
           {/* Thumbnail Gallery */}
           {displayImages.length > 1 && (
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-3">
               {displayImages.map((img, idx) => (
                 <button
                   key={idx}
                   onClick={() => setSelectedImage(idx)}
-                  className={`relative aspect-square rounded-lg overflow-hidden border-2 transition-all ${
+                  className={`relative aspect-square rounded-lg overflow-hidden border-2 transition-all touch-manipulation active:scale-95 min-h-[60px] ${
                     selectedImage === idx
                       ? "border-[var(--color-primary)] scale-105"
                       : "border-transparent hover:border-white/30"
@@ -144,7 +144,7 @@ export default function ProductPage() {
                     alt={`${product.name} ${idx + 1}`}
                     fill
                     className="object-cover"
-                    sizes="100px"
+                    sizes="(max-width: 640px) 30vw, 100px"
                   />
                 </button>
               ))}
@@ -240,10 +240,10 @@ export default function ProductPage() {
             >
               <Button
                 size="lg"
-                className="w-full text-lg gap-3 bg-[var(--color-primary)] hover:bg-[var(--color-primary)]/90"
+                className="w-full text-base sm:text-lg gap-2 sm:gap-3 bg-[var(--color-primary)] hover:bg-[var(--color-primary)]/90 font-bold"
                 disabled={product.stock === "out_of_stock"}
               >
-                <MessageCircle className="w-6 h-6" />
+                <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
                 Commander via WhatsApp
               </Button>
             </a>

@@ -31,6 +31,8 @@ body {
   font-family: 'Inter', 'Poppins', system-ui, sans-serif;
   font-weight: 500;
   overflow-x: hidden;
+  /* Better tap highlighting on mobile */
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -41,6 +43,8 @@ html {
   /* Prevent text size adjustment on mobile */
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /* Prevent overscroll bounce on iOS */
+  overscroll-behavior: none;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

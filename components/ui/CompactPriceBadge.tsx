@@ -159,21 +159,21 @@ export default function CompactPriceBadge({
         {/* Subtle shine effect */}
         <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
         
-        <div className="relative p-2.5 sm:p-3 md:p-3.5">
-          <div className="flex items-center justify-between gap-3">
+        <div className="relative p-3 sm:p-3 md:p-3.5">
+          <div className="flex items-center justify-between gap-2 sm:gap-3">
             {/* Current Price - Bold Red Badge Style */}
-            <div ref={priceBadgeRef} className="bg-gradient-to-r from-red-600 to-red-700 px-3 sm:px-4 py-1.5 sm:py-2 rounded-md shadow-lg inline-flex items-baseline gap-1">
+            <div ref={priceBadgeRef} className="bg-gradient-to-r from-red-600 to-red-700 px-3 sm:px-4 py-1.5 sm:py-2 rounded-md shadow-lg inline-flex items-baseline gap-1 flex-shrink-0">
               <span
                 ref={currentPriceRef}
-                className="text-xl sm:text-2xl md:text-3xl font-black text-white leading-none drop-shadow-sm"
+                className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-white leading-none drop-shadow-sm"
               >
                 {displayPrice.toLocaleString()}
               </span>
-              <span className="text-sm sm:text-base font-bold text-white/95">DH</span>
+              <span className="text-xs sm:text-sm md:text-base font-bold text-white/95">DH</span>
             </div>
 
             {/* Right side - Original Price & Savings */}
-            <div className="flex flex-col items-end gap-1">
+            <div className="flex flex-col items-end gap-0.5 sm:gap-1 min-w-0">
               {/* Original Price with strikethrough */}
               <div ref={originalPriceRef} className="relative">
                 <span className="text-xs sm:text-sm text-gray-400 font-medium whitespace-nowrap">

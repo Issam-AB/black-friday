@@ -72,7 +72,7 @@ export default function UrgentBanner() {
   return (
     <div
       ref={bannerRef}
-      className={`w-full py-3 relative overflow-hidden ${
+      className={`w-full py-2.5 sm:py-3 relative overflow-hidden ${
         isVeryUrgent
           ? "bg-gradient-to-r from-red-600 via-red-500 to-red-600"
           : "bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600"
@@ -98,15 +98,15 @@ export default function UrgentBanner() {
         />
       )}
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="flex items-center justify-center gap-3 flex-wrap">
+      <div className="container mx-auto px-3 sm:px-4 relative z-10">
+        <div className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
           {isVeryUrgent ? (
-            <Flame className="w-5 h-5 sm:w-6 sm:h-6 text-white animate-bounce-glow" />
+            <Flame className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white animate-bounce-glow flex-shrink-0" />
           ) : (
-            <Zap className="w-5 h-5 sm:w-6 sm:h-6 text-white animate-float" />
+            <Zap className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white animate-float flex-shrink-0" />
           )}
           
-          <span className={`text-white font-black text-base sm:text-lg uppercase tracking-wide text-center ${
+          <span className={`text-white font-black text-sm sm:text-base md:text-lg uppercase tracking-wide text-center leading-tight ${
             isVeryUrgent ? 'animate-neon-glow' : 'animate-text-shimmer'
           }`}>
             {isVeryUrgent ? (
@@ -117,7 +117,7 @@ export default function UrgentBanner() {
           </span>
 
           {isVeryUrgent && (
-            <Flame className="w-5 h-5 sm:w-6 sm:h-6 text-white animate-bounce-glow" />
+            <Flame className="hidden sm:block w-5 h-5 md:w-6 md:h-6 text-white animate-bounce-glow flex-shrink-0" />
           )}
         </div>
       </div>

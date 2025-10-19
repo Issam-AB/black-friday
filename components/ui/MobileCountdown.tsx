@@ -84,7 +84,7 @@ export default function MobileCountdown() {
 
   return (
     <div
-      className={`md:hidden flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg border relative overflow-hidden min-h-[44px] ${
+      className={`md:hidden flex items-center justify-center gap-1 px-2 sm:px-2.5 py-2 rounded-lg border relative overflow-hidden ${
         isUrgent
           ? "bg-gradient-to-r from-red-600 to-red-500 border-red-400/50"
           : "bg-gradient-to-r from-[oklch(65%_0.28_25)] to-[oklch(75%_0.25_20)] border-[oklch(82%_0.22_100)]/40"
@@ -118,17 +118,24 @@ export default function MobileCountdown() {
         />
       )}
       
-      <Clock className={`w-3.5 h-3.5 text-white relative z-10 flex-shrink-0 ${
+      <Clock className={`w-3 sm:w-3.5 h-3 sm:h-3.5 text-white relative z-10 flex-shrink-0 ${
         isUrgent ? 'animate-pulse' : ''
       }`} />
-      <span className={`text-xs font-black text-white relative z-10 drop-shadow-sm whitespace-nowrap ${
-        isUrgent ? 'animate-pulse' : ''
-      }`}>
-        {timeLeft.days > 0 && `${timeLeft.days}j `}
-        {String(timeLeft.hours).padStart(2, "0")}:
-        {String(timeLeft.minutes).padStart(2, "0")}:
-        {String(timeLeft.seconds).padStart(2, "0")}
-      </span>
+      <div className="relative z-10 flex items-baseline gap-0.5">
+        {timeLeft.days > 0 && (
+          <span className="text-[10px] sm:text-xs font-black text-white drop-shadow-sm">
+            {timeLeft.days}
+            <span className="text-[8px] sm:text-[10px] font-semibold">j</span>
+          </span>
+        )}
+        <span className={`text-[11px] sm:text-xs font-black text-white drop-shadow-sm whitespace-nowrap tabular-nums ${
+          isUrgent ? 'animate-pulse' : ''
+        }`}>
+          {String(timeLeft.hours).padStart(2, "0")}:
+          {String(timeLeft.minutes).padStart(2, "0")}:
+          {String(timeLeft.seconds).padStart(2, "0")}
+        </span>
+      </div>
     </div>
   );
 }

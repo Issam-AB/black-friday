@@ -156,65 +156,70 @@ export default function Navbar({ activeCategory, onCategoryChange }: NavbarProps
 
       {/* Mobile/Tablet Navigation */}
       <div className="lg:hidden navbar-content">
-        {/* Top Row - Better spacing and touch targets */}
-        <div className="flex items-center justify-between gap-2 px-4 py-3">
-          <div className="flex-shrink-0">
-            <AnimatedLogo />
-          </div>
+        <div className="px-3 sm:px-4">
+          {/* Top Row - Logo, Countdown, Search */}
+          <div className="flex items-center gap-2 sm:gap-3 py-3">
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <AnimatedLogo />
+            </div>
 
-          <div className="flex items-center gap-2 flex-1 justify-end max-w-[70%]">
-            <MobileCountdown />
+            {/* Countdown - Compact */}
+            <div className="flex-shrink-0">
+              <MobileCountdown />
+            </div>
             
-            <div className="relative flex-1 max-w-[160px] sm:max-w-[200px]">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/50 pointer-events-none" />
+            {/* Search - Takes remaining space */}
+            <div className="relative flex-1 min-w-0">
+              <Search className="absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/50 pointer-events-none" />
               <input
                 type="text"
                 placeholder="Recherche..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-[var(--bg-filter)] text-white placeholder:text-white/50 rounded-lg pl-9 pr-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[oklch(65%_0.28_25_/_0.4)] focus:shadow-[0_0_0_3px_oklch(65%_0.28_25_/_0.1)] transition-all"
+                className="w-full bg-[var(--bg-filter)] text-white placeholder:text-white/50 placeholder:text-xs sm:placeholder:text-sm rounded-lg pl-8 sm:pl-9 pr-2.5 sm:pr-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[oklch(65%_0.28_25_/_0.4)] focus:shadow-[0_0_0_3px_oklch(65%_0.28_25_/_0.1)] transition-all"
               />
             </div>
           </div>
-        </div>
 
-        {/* Categories Row - Improved scrolling with indicators */}
-        <div className="relative">
-          {/* Gradient fade indicators for scroll */}
-          <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[var(--bg-navbar)] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[var(--bg-navbar)] to-transparent z-10 pointer-events-none" />
-          
-          <div 
-            className="flex items-center gap-2 overflow-x-auto pb-3 pt-1 px-4 snap-x snap-mandatory scrollbar-hide scroll-smooth"
-            style={{
-              scrollPaddingLeft: '1rem',
-              scrollPaddingRight: '1rem',
-            }}
-          >
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => {
-                  onCategoryChange(category);
-                  // Scroll button into view on mobile
-                  const btn = document.querySelector(`[data-mobile-cat="${category}"]`);
-                  if (btn) {
-                    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                  }
-                }}
-                data-mobile-cat={category}
-                className={cn(
-                  "px-4 py-2.5 rounded-lg text-sm font-bold uppercase whitespace-nowrap transition-all duration-300 flex-shrink-0 snap-center",
-                  "min-h-[44px] flex items-center justify-center",
-                  "active:scale-95 touch-manipulation",
-                  activeCategory === category
-                    ? "bg-gradient-to-r from-[oklch(65%_0.28_25)] to-[oklch(75%_0.25_20)] text-white shadow-lg shadow-[oklch(65%_0.28_25)]/30"
-                    : "bg-[var(--bg-filter)] text-white/80 hover:bg-[var(--bg-filter-hover)] hover:text-white"
-                )}
-              >
-                {category}
-              </button>
-            ))}
+          {/* Categories Row - Improved scrolling with indicators */}
+          <div className="relative -mx-3 sm:-mx-4">
+            {/* Gradient fade indicators for scroll */}
+            <div className="absolute left-0 top-0 bottom-0 w-6 sm:w-8 bg-gradient-to-r from-[var(--bg-navbar)] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-6 sm:w-8 bg-gradient-to-l from-[var(--bg-navbar)] to-transparent z-10 pointer-events-none" />
+            
+            <div 
+              className="flex items-center gap-2 overflow-x-auto pb-3 pt-1 px-3 sm:px-4 snap-x snap-mandatory scrollbar-hide scroll-smooth"
+              style={{
+                scrollPaddingLeft: '0.75rem',
+                scrollPaddingRight: '0.75rem',
+              }}
+            >
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => {
+                    onCategoryChange(category);
+                    // Scroll button into view on mobile
+                    const btn = document.querySelector(`[data-mobile-cat="${category}"]`);
+                    if (btn) {
+                      btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    }
+                  }}
+                  data-mobile-cat={category}
+                  className={cn(
+                    "px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-bold uppercase whitespace-nowrap transition-all duration-300 flex-shrink-0 snap-center",
+                    "min-h-[40px] sm:min-h-[44px] flex items-center justify-center",
+                    "active:scale-95 touch-manipulation",
+                    activeCategory === category
+                      ? "bg-gradient-to-r from-[oklch(65%_0.28_25)] to-[oklch(75%_0.25_20)] text-white shadow-lg shadow-[oklch(65%_0.28_25)]/30"
+                      : "bg-[var(--bg-filter)] text-white/80 hover:bg-[var(--bg-filter-hover)] hover:text-white"
+                  )}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>

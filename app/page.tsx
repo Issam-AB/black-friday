@@ -97,8 +97,8 @@ export default function Home() {
 
         {/* Empty State */}
         {filteredProducts.length === 0 && (
-          <div className="flex flex-col items-center justify-center py-20">
-            <p className="text-white/70 text-lg">
+          <div className="flex flex-col items-center justify-center py-16 sm:py-20 px-4">
+            <p className="text-white/70 text-base sm:text-lg text-center">
               Aucun produit disponible dans cette catégorie
             </p>
           </div>
