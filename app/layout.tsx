@@ -17,8 +17,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "VENTE FLASH - Black Friday Furniture",
-  description: "Black Friday luxury furniture deals - Limited time offers on sofas, tables, and more",
+  title: "Black Friday Sketch | Exclusive Furniture Flash Sales 🔥",
+  description: "Discover unbeatable Black Friday deals on luxury furniture. Limited time flash sales on sofas, tables, chairs and more. Don't miss out!",
 };
 
 export default function RootLayout({
