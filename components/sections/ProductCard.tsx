@@ -38,16 +38,16 @@ export default function ProductCard({ product, index }: ProductCardProps) {
     <Link href={`/product/${product.id}`}>
       <div
         ref={cardRef}
-        className="group relative overflow-hidden cursor-pointer rounded-xl border border-white/10 bg-gradient-to-br from-zinc-900/80 to-black/80 backdrop-blur-sm shadow-lg hover:shadow-2xl hover:border-white/20 active:scale-[0.98] hover:sm:-translate-y-2 transition-all duration-300"
+        className="group relative overflow-hidden cursor-pointer rounded-xl border border-white/10 bg-gradient-to-br from-zinc-900/80 to-black/80 backdrop-blur-sm shadow-lg hover:shadow-2xl hover:border-white/20 active:scale-[0.98] sm:hover:-translate-y-2 transition-all duration-300"
       >
         {/* Image Section - Balanced & Visual */}
-        <div className="relative aspect-[4/3.5] sm:aspect-[1/1] overflow-hidden">
+        <div className="relative aspect-[4/3] sm:aspect-[1/1] overflow-hidden">
           <Image
             src={product.image}
             alt={product.name}
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-110"
-            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
             priority={index < 4}
           />
 
@@ -55,16 +55,16 @@ export default function ProductCard({ product, index }: ProductCardProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
           {/* Top Badges */}
-          <div className="absolute top-2 left-2 sm:top-3 sm:left-3">
-            <span className="bg-gradient-to-r from-red-600 to-orange-500 text-white text-[10px] sm:text-xs font-bold px-2 py-1 sm:px-3 sm:py-1.5 rounded-md shadow-lg uppercase tracking-wide">
+          <div className="absolute top-3 left-3 sm:top-3 sm:left-3">
+            <span className="bg-gradient-to-r from-red-600 to-orange-500 text-white text-xs sm:text-xs font-bold px-3 py-1.5 sm:px-3 sm:py-1.5 rounded-md shadow-lg uppercase tracking-wide">
               OFFRE LIMITÉE
             </span>
           </div>
           
-          <div className="absolute top-2 right-2 sm:top-3 sm:right-3">
+          <div className="absolute top-3 right-3 sm:top-3 sm:right-3">
             <div className="relative">
               <div className="absolute inset-0 bg-red-500/40 blur-md rounded-lg" />
-              <span className="relative block bg-gradient-to-br from-red-500 via-red-600 to-red-700 text-white text-sm sm:text-base md:text-lg font-black px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg shadow-xl border border-red-400/30">
+              <span className="relative block bg-gradient-to-br from-red-500 via-red-600 to-red-700 text-white text-base sm:text-base md:text-lg font-black px-3 py-1.5 sm:px-3 sm:py-1.5 rounded-lg shadow-xl border border-red-400/30">
                 -{product.discount}%
               </span>
             </div>
@@ -72,22 +72,22 @@ export default function ProductCard({ product, index }: ProductCardProps) {
         </div>
 
         {/* Content Section - Balanced layout */}
-        <div className="p-2.5 sm:p-3 flex flex-col gap-1.5 sm:gap-2">
+        <div className="p-4 sm:p-3 md:p-4 flex flex-col gap-2 sm:gap-2">
           {/* Product Name */}
-          <h3 className="text-white font-bold uppercase text-xs sm:text-sm md:text-base leading-tight line-clamp-1">
+          <h3 className="text-white font-bold uppercase text-sm sm:text-sm md:text-base leading-tight line-clamp-2">
             {product.name}
           </h3>
 
           {/* Category & Dimensions Row */}
-          <div className="flex flex-wrap items-center gap-1 sm:gap-1.5">
-            <span className="inline-flex items-center gap-0.5 sm:gap-1 bg-zinc-800/90 text-white/90 text-[10px] sm:text-xs font-medium px-1.5 sm:px-2 py-0.5 sm:py-1 rounded border border-zinc-700">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-1.5">
+            <span className="inline-flex items-center gap-1 sm:gap-1 bg-zinc-800/90 text-white/90 text-xs sm:text-xs font-medium px-2 sm:px-2 py-1 sm:py-1 rounded border border-zinc-700">
               <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
               </svg>
               {product.category}
             </span>
             {product.dimensions && (
-              <span className="inline-flex items-center gap-0.5 sm:gap-1 bg-zinc-800/90 text-white/90 text-[10px] sm:text-xs font-medium px-1.5 sm:px-2 py-0.5 sm:py-1 rounded border border-zinc-700">
+              <span className="inline-flex items-center gap-1 sm:gap-1 bg-zinc-800/90 text-white/90 text-xs sm:text-xs font-medium px-2 sm:px-2 py-1 sm:py-1 rounded border border-zinc-700">
                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
                 </svg>
@@ -97,24 +97,24 @@ export default function ProductCard({ product, index }: ProductCardProps) {
           </div>
 
           {/* Tags */}
-          <div className="flex flex-wrap gap-1">
+          <div className="flex flex-wrap gap-1.5">
             {product.tags.slice(0, 3).map((tag) => (
               <span
                 key={tag}
-                className="text-[10px] sm:text-xs bg-gradient-to-r from-zinc-800/90 to-zinc-700/90 text-white/80 px-1.5 sm:px-2 py-0.5 rounded border border-zinc-600/30 font-medium"
+                className="text-xs sm:text-xs bg-gradient-to-r from-zinc-800/90 to-zinc-700/90 text-white/80 px-2 sm:px-2 py-1 rounded border border-zinc-600/30 font-medium"
               >
                 {tag}
               </span>
             ))}
             {product.tags.length > 3 && (
-              <span className="text-[10px] sm:text-xs text-white/60 font-medium px-1 py-0.5">
+              <span className="text-xs sm:text-xs text-white/60 font-medium px-1 py-1">
                 +{product.tags.length - 3}
               </span>
             )}
           </div>
 
           {/* Stock Indicator */}
-          <div className="text-[10px] sm:text-xs font-semibold">
+          <div className="text-xs sm:text-xs font-semibold">
             {product.stock === "in_stock" && (
               <div className="inline-flex items-center gap-1 bg-green-500/20 text-green-400 px-2 py-1 rounded border border-green-500/30">
                 <span className="relative flex h-2 w-2">
@@ -142,7 +142,7 @@ export default function ProductCard({ product, index }: ProductCardProps) {
           </div>
 
           {/* Animated Price Badge */}
-          <div className="mt-1">
+          <div className="mt-2">
             <CompactPriceBadge
               currentPrice={product.price}
               originalPrice={product.originalPrice}

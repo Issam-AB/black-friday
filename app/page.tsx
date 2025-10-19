@@ -87,9 +87,9 @@ export default function Home() {
       <UrgentBanner />
 
       {/* Main Content */}
-      <main className="relative pt-36 sm:pt-40 md:pt-32 lg:pt-28 pb-8 sm:pb-12 px-3 sm:px-4 md:px-6 lg:px-8">
-        {/* Product Grid - Mobile First, Desktop 4 columns for better image display */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+      <main className="relative pt-40 sm:pt-44 md:pt-32 lg:pt-28 pb-8 sm:pb-12 px-4 sm:px-6 md:px-8 lg:px-10">
+        {/* Product Grid - Mobile First: 1 column, then progressively more */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-4 md:gap-5 lg:gap-6 max-w-[1920px] mx-auto">
           {filteredProducts.map((product, index) => (
             <ProductCard key={product.id} product={product} index={index} />
           ))}

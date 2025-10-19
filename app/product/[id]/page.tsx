@@ -64,7 +64,7 @@ export default function ProductPage() {
   const whatsappNumber = "212600000000"; // Replace with actual number
 
   return (
-    <div className="min-h-screen relative py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen relative py-6 sm:py-8 px-4 sm:px-6 lg:px-8">
       {/* Fixed Gradient Background */}
       <div className="fixed inset-0 min-h-screen -z-10">
         {/* Base gradient */}
@@ -92,9 +92,9 @@ export default function ProductPage() {
       </div>
 
       {/* Back Button */}
-      <div className="mb-6 relative z-10">
+      <div className="mb-4 sm:mb-6 relative z-10">
         <Link href="/">
-          <Button variant="ghost" className="gap-2">
+          <Button variant="ghost" className="gap-2 text-sm sm:text-base">
             <ArrowLeft className="w-4 h-4" />
             Retour aux produits
           </Button>
@@ -102,7 +102,7 @@ export default function ProductPage() {
       </div>
 
       {/* Product Details Grid */}
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-7xl mx-auto">
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 max-w-7xl mx-auto">
         {/* Left: Image Carousel */}
         <div ref={imageRef} className="space-y-4">
           <Card className="relative aspect-[4/3] overflow-hidden p-0">
@@ -153,10 +153,10 @@ export default function ProductPage() {
         </div>
 
         {/* Right: Product Info */}
-        <div ref={contentRef} className="space-y-6">
+        <div ref={contentRef} className="space-y-4 sm:space-y-6">
           {/* Title */}
           <div>
-            <h1 className="text-3xl sm:text-4xl font-bold uppercase text-white mb-2">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase text-white mb-2 leading-tight">
               {product.name}
             </h1>
             <p className="text-white/70 text-sm">{product.category}</p>
@@ -262,7 +262,7 @@ export default function ProductPage() {
         <h2 className="text-2xl font-bold text-white mb-6">
           Produits similaires
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-4">
           {products
             .filter((p) => p.category === product.category && p.id !== product.id)
             .slice(0, 4)
