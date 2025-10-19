@@ -123,10 +123,10 @@ export default function CountdownTimer() {
       {/* Animated shimmer overlay */}
       {!isUrgent && (
         <div 
-          className="absolute inset-0 opacity-30 pointer-events-none"
+          className="absolute inset-0 opacity-15 pointer-events-none"
           style={{
-            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
-            animation: 'shimmer-wave 3s infinite'
+            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)',
+            animation: 'shimmer-wave 4s infinite'
           }}
         />
       )}
@@ -145,13 +145,13 @@ export default function CountdownTimer() {
       {/* Clock Icon */}
       <Clock
         className={`w-4 h-4 relative z-10 ${
-          isUrgent ? "text-red-400 animate-bounce-glow" : isWarning ? "text-orange-400 animate-float" : "text-[oklch(82%_0.22_100)] animate-float"
+          isUrgent ? "text-red-400 animate-float" : isWarning ? "text-orange-400 animate-float" : "text-[oklch(82%_0.22_100)] animate-float"
         }`}
       />
 
       {/* Label */}
-      <span className={`text-xs font-semibold text-white/90 uppercase tracking-wide relative z-10 ${
-        isUrgent ? "animate-neon-glow" : ""
+      <span className={`text-xs font-semibold uppercase tracking-wide relative z-10 ${
+        isUrgent ? "text-red-300 animate-pulse" : "text-white/90"
       }`}>
         {isUrgent ? "Se termine!" : "Fin dans:"}
       </span>
@@ -194,12 +194,12 @@ function TimeUnit({ value, label, highlight, index = 0 }: TimeUnitProps) {
       <div
         className={`relative min-w-[28px] h-8 flex items-center justify-center rounded font-black text-base overflow-hidden ${
           highlight
-            ? `bg-gradient-to-br ${gradients[3]} text-white shadow-lg animate-pulse-glow`
+            ? `bg-gradient-to-br ${gradients[3]} text-white shadow-lg`
             : `bg-gradient-to-br ${gradients[index]} text-white shadow-md`
         }`}
         style={{
           boxShadow: highlight 
-            ? "0 0 12px oklch(65% 0.28 25), 0 2px 6px rgba(0,0,0,0.3)"
+            ? "0 0 8px oklch(65% 0.28 25 / 0.4), 0 2px 6px rgba(0,0,0,0.3)"
             : "0 2px 6px rgba(0,0,0,0.2)",
         }}
       >
@@ -209,10 +209,10 @@ function TimeUnit({ value, label, highlight, index = 0 }: TimeUnitProps) {
         {/* Animated shimmer for highlight */}
         {highlight && (
           <div 
-            className="absolute inset-0 opacity-40"
+            className="absolute inset-0 opacity-20"
             style={{
-              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)',
-              animation: 'shimmer-wave 2s infinite'
+              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
+              animation: 'shimmer-wave 3s infinite'
             }}
           />
         )}

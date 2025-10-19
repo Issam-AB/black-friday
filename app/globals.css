@@ -75,8 +75,9 @@ img {
 
 /* Focus visible for accessibility */
 *:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 1px solid oklch(65% 0.28 25 / 0.5);
   outline-offset: 2px;
+  box-shadow: 0 0 0 3px oklch(65% 0.28 25 / 0.15);
 }
 
 /* ===== CUSTOM ANIMATIONS ===== */
@@ -85,16 +86,16 @@ img {
 @keyframes text-shimmer {
   0%, 100% {
     opacity: 1;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.15);
   }
   50% {
-    opacity: 0.95;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    opacity: 0.98;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
   }
 }
 
 .animate-text-shimmer {
-  animation: text-shimmer 3s ease-in-out infinite;
+  animation: text-shimmer 4s ease-in-out infinite;
 }
 
 /* Gradient animation for text */
@@ -117,16 +118,16 @@ img {
 @keyframes pulse-glow {
   0%, 100% {
     opacity: 1;
-    box-shadow: 0 0 5px oklch(65% 0.28 25);
+    box-shadow: 0 0 3px oklch(65% 0.28 25 / 0.3);
   }
   50% {
-    opacity: 0.7;
-    box-shadow: 0 0 15px oklch(82% 0.22 100);
+    opacity: 0.95;
+    box-shadow: 0 0 8px oklch(82% 0.22 100 / 0.4);
   }
 }
 
 .animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
+  animation: pulse-glow 3s ease-in-out infinite;
 }
 
 /* Float effect */
@@ -220,16 +221,16 @@ img {
 @keyframes bounce-glow {
   0%, 100% {
     transform: translateY(0);
-    filter: drop-shadow(0 0 5px oklch(65% 0.28 25));
+    filter: drop-shadow(0 0 3px oklch(65% 0.28 25 / 0.4));
   }
   50% {
-    transform: translateY(-10px);
-    filter: drop-shadow(0 0 20px oklch(82% 0.22 100));
+    transform: translateY(-8px);
+    filter: drop-shadow(0 0 8px oklch(82% 0.22 100 / 0.5));
   }
 }
 
 .animate-bounce-glow {
-  animation: bounce-glow 2s ease-in-out infinite;
+  animation: bounce-glow 3s ease-in-out infinite;
 }
 
 /* Rotating gradient background */
@@ -266,21 +267,20 @@ img {
 @keyframes neon-glow {
   0%, 100% {
     text-shadow: 
-      0 0 5px oklch(82% 0.22 100),
-      0 0 10px oklch(82% 0.22 100),
-      0 0 15px oklch(65% 0.28 25);
+      0 0 3px oklch(82% 0.22 100 / 0.4),
+      0 0 6px oklch(82% 0.22 100 / 0.3),
+      0 0 9px oklch(65% 0.28 25 / 0.2);
   }
   50% {
     text-shadow: 
-      0 0 10px oklch(82% 0.22 100),
-      0 0 20px oklch(82% 0.22 100),
-      0 0 30px oklch(65% 0.28 25),
-      0 0 40px oklch(65% 0.28 25);
+      0 0 5px oklch(82% 0.22 100 / 0.5),
+      0 0 10px oklch(82% 0.22 100 / 0.4),
+      0 0 15px oklch(65% 0.28 25 / 0.3);
   }
 }
 
 .animate-neon-glow {
-  animation: neon-glow 2s ease-in-out infinite;
+  animation: neon-glow 3s ease-in-out infinite;
 }
 
 /* Shake animation for alerts */
@@ -311,15 +311,15 @@ img {
 /* Glow pulse animation */
 @keyframes glow-pulse {
   0%, 100% {
-    box-shadow: 0 0 5px oklch(65% 0.28 25), 0 0 10px oklch(65% 0.28 25);
+    box-shadow: 0 0 3px oklch(65% 0.28 25 / 0.3), 0 0 6px oklch(65% 0.28 25 / 0.2);
   }
   50% {
-    box-shadow: 0 0 20px oklch(82% 0.22 100), 0 0 30px oklch(82% 0.22 100), 0 0 40px oklch(82% 0.22 100);
+    box-shadow: 0 0 8px oklch(82% 0.22 100 / 0.4), 0 0 12px oklch(82% 0.22 100 / 0.3), 0 0 16px oklch(82% 0.22 100 / 0.2);
   }
 }
 
 .animate-glow-pulse {
-  animation: glow-pulse 2s ease-in-out infinite;
+  animation: glow-pulse 3s ease-in-out infinite;
 }
 
 /* Slide in from bottom */
