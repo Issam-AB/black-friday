@@ -1,103 +1,117 @@
-import Image from "next/image";
+"use client";
+
+import { useState, useMemo } from "react";
+import Navbar from "@/components/sections/Navbar";
+import UrgentBanner from "@/components/ui/UrgentBanner";
+import ProductCard from "@/components/sections/ProductCard";
+import FloatingParticles from "@/components/ui/FloatingParticles";
+import { products } from "@/data/products";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [activeCategory, setActiveCategory] = useState("TOUS");
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  // Filter products based on active category
+  const filteredProducts = useMemo(() => {
+    if (activeCategory === "TOUS") {
+      return products;
+    }
+    return products.filter((product) => product.category === activeCategory);
+  }, [activeCategory]);
+
+  return (
+    <div className="min-h-screen relative">
+      {/* Fixed Gradient Background */}
+      <div className="fixed inset-0 min-h-screen -z-10">
+        {/* Base gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[oklch(18%_0.04_260)] via-[oklch(20%_0.04_260)] to-[oklch(18%_0.04_260)]"></div>
+        
+        {/* Animated Top-left glow */}
+        <div 
+          className="absolute top-0 left-0 w-[600px] h-[600px] lg:w-[800px] lg:h-[800px] bg-gradient-to-br from-[oklch(25%_0.06_260)] to-transparent rounded-full opacity-40 blur-3xl"
+          style={{
+            animation: 'float 8s ease-in-out infinite'
+          }}
+        ></div>
+        
+        {/* Animated Bottom-right glow */}
+        <div 
+          className="absolute bottom-0 right-0 w-[600px] h-[600px] lg:w-[800px] lg:h-[800px] bg-gradient-to-tl from-[oklch(25%_0.06_260)] to-transparent rounded-full opacity-40 blur-3xl"
+          style={{
+            animation: 'float 10s ease-in-out infinite reverse'
+          }}
+        ></div>
+        
+        {/* Animated Accent glow - red */}
+        <div 
+          className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-gradient-to-br from-[oklch(65%_0.28_25)]/10 to-transparent rounded-full opacity-30 blur-3xl"
+          style={{
+            animation: 'pulse-glow 6s ease-in-out infinite'
+          }}
+        ></div>
+        
+        {/* Animated Accent glow - yellow */}
+        <div 
+          className="absolute bottom-1/3 left-1/4 w-[400px] h-[400px] bg-gradient-to-tr from-[oklch(82%_0.22_100)]/10 to-transparent rounded-full opacity-30 blur-3xl"
+          style={{
+            animation: 'pulse-glow 7s ease-in-out infinite 1s'
+          }}
+        ></div>
+
+        {/* Additional moving accent - top right */}
+        <div 
+          className="absolute top-1/4 right-1/3 w-[300px] h-[300px] bg-gradient-to-br from-[oklch(82%_0.22_100)]/5 to-transparent rounded-full opacity-40 blur-3xl"
+          style={{
+            animation: 'float 9s ease-in-out infinite 2s'
+          }}
+        ></div>
+
+        {/* Additional moving accent - bottom left */}
+        <div 
+          className="absolute bottom-1/4 left-1/3 w-[300px] h-[300px] bg-gradient-to-tl from-[oklch(65%_0.28_25)]/5 to-transparent rounded-full opacity-40 blur-3xl"
+          style={{
+            animation: 'float 11s ease-in-out infinite 3s reverse'
+          }}
+        ></div>
+      </div>
+
+      {/* Floating Particles for Black Friday effect */}
+      <FloatingParticles />
+
+      {/* Sticky Navbar */}
+      <Navbar
+        activeCategory={activeCategory}
+        onCategoryChange={setActiveCategory}
+      />
+      
+      {/* Urgent Banner (shows when < 12 hours left) */}
+      <UrgentBanner />
+
+      {/* Main Content */}
+      <main className="relative pt-36 sm:pt-40 md:pt-32 lg:pt-28 pb-8 sm:pb-12 px-3 sm:px-4 md:px-6 lg:px-8">
+        {/* Product Grid - Mobile First, Desktop 4 columns for better image display */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+          {filteredProducts.map((product, index) => (
+            <ProductCard key={product.id} product={product} index={index} />
+          ))}
         </div>
+
+        {/* Empty State */}
+        {filteredProducts.length === 0 && (
+          <div className="flex flex-col items-center justify-center py-20">
+            <p className="text-white/70 text-lg">
+              Aucun produit disponible dans cette catégorie
+            </p>
+          </div>
+        )}
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+      {/* Subtle overlay pattern */}
+      <div className="fixed inset-0 pointer-events-none -z-5 opacity-[0.02]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
+          backgroundSize: '40px 40px'
+        }}></div>
+      </div>
     </div>
   );
 }
