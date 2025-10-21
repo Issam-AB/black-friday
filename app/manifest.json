@@ -1,0 +1,22 @@
+{
+  "name": "Black Friday Sketch",
+  "short_name": "BF Sketch",
+  "description": "Exclusive Black Friday furniture deals and flash sales",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0f1e",
+  "theme_color": "#ff6b1a",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml"
+    }
+  ]
+}
