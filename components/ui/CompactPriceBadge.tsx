@@ -154,40 +154,40 @@ export default function CompactPriceBadge({
 
   return (
     <div ref={containerRef} className="relative w-full">
-      {/* Main price badge - simplified without duplicate discount */}
+      {/* Main price badge - compact & visual */}
       <div className="relative overflow-hidden rounded-lg bg-gradient-to-br from-zinc-900 via-zinc-900 to-black border border-zinc-800 shadow-lg">
         {/* Subtle shine effect */}
         <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
         
-        <div className="relative p-3 sm:p-3 md:p-3.5">
-          <div className="flex items-center justify-between gap-2 sm:gap-3">
+        <div className="relative p-2 sm:p-2.5">
+          <div className="flex items-center justify-between gap-2">
             {/* Current Price - Bold Red Badge Style */}
-            <div ref={priceBadgeRef} className="bg-gradient-to-r from-red-600 to-red-700 px-3 sm:px-4 py-1.5 sm:py-2 rounded-md shadow-lg inline-flex items-baseline gap-1 flex-shrink-0">
+            <div ref={priceBadgeRef} className="bg-gradient-to-r from-red-600 to-red-700 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-md shadow-lg inline-flex items-baseline gap-0.5 sm:gap-1 flex-shrink-0">
               <span
                 ref={currentPriceRef}
-                className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-white leading-none drop-shadow-sm"
+                className="text-xl sm:text-2xl md:text-3xl font-black text-white leading-none drop-shadow-sm"
               >
                 {displayPrice.toLocaleString()}
               </span>
-              <span className="text-xs sm:text-sm md:text-base font-bold text-white/95">DH</span>
+              <span className="text-xs sm:text-sm font-bold text-white/95">DH</span>
             </div>
 
             {/* Right side - Original Price & Savings */}
-            <div className="flex flex-col items-end gap-0.5 sm:gap-1 min-w-0">
+            <div className="flex flex-col items-end gap-0 sm:gap-0.5 min-w-0">
               {/* Original Price with strikethrough */}
               <div ref={originalPriceRef} className="relative">
-                <span className="text-xs sm:text-sm text-gray-400 font-medium whitespace-nowrap">
+                <span className="text-[10px] sm:text-xs text-gray-400 font-semibold whitespace-nowrap">
                   {originalPrice.toLocaleString()} DH
                 </span>
                 <div 
                   ref={strikethroughRef}
-                  className="absolute top-1/2 left-0 right-0 h-[1.5px] sm:h-[2px] bg-red-500 origin-left"
+                  className="absolute top-1/2 left-0 right-0 h-[1.5px] bg-red-500 origin-left"
                   style={{ transform: "translateY(-50%)" }}
                 />
               </div>
 
               {/* Savings indicator */}
-              <div ref={savingsTextRef} className="text-[10px] sm:text-xs text-emerald-400 font-bold whitespace-nowrap">
+              <div ref={savingsTextRef} className="text-[9px] sm:text-[10px] text-emerald-400 font-bold whitespace-nowrap">
                 Économisez {savings.toLocaleString()} DH
               </div>
             </div>
