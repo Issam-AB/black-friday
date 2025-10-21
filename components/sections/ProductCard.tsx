@@ -96,23 +96,6 @@ export default function ProductCard({ product, index }: ProductCardProps) {
             )}
           </div>
 
-          {/* Tags */}
-          <div className="flex flex-wrap gap-1.5">
-            {product.tags.slice(0, 3).map((tag) => (
-              <span
-                key={tag}
-                className="text-xs sm:text-xs bg-gradient-to-r from-zinc-800/90 to-zinc-700/90 text-white/80 px-2 sm:px-2 py-1 rounded border border-zinc-600/30 font-medium"
-              >
-                {tag}
-              </span>
-            ))}
-            {product.tags.length > 3 && (
-              <span className="text-xs sm:text-xs text-white/60 font-medium px-1 py-1">
-                +{product.tags.length - 3}
-              </span>
-            )}
-          </div>
-
           {/* Stock Indicator */}
           <div className="text-xs sm:text-xs font-semibold">
             {product.stock === "in_stock" && (

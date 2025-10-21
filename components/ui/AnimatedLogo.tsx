@@ -133,11 +133,10 @@ export default function AnimatedLogo() {
 
     // After loading is complete, add dynamic continuous animations
     tl.add(() => {
-      // S letter pulse with rotation
+      // S letter - subtle pulse only, NO rotation
       gsap.to(letterSRef.current, {
-        scale: 1.05,
-        rotation: 3,
-        duration: 2,
+        scale: 1.03,
+        duration: 2.5,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
@@ -161,42 +160,42 @@ export default function AnimatedLogo() {
         transformOrigin: "center",
       });
 
-      // Inner circle pulse
+      // Inner circle subtle pulse
       gsap.to(innerCircleRef.current, {
-        scale: 1.05,
-        opacity: 0.4,
-        duration: 2.5,
+        scale: 1.02,
+        opacity: 0.35,
+        duration: 3,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
       });
 
-      // Sparkles dynamic twinkle with scale
+      // Sparkles dynamic twinkle - reduced intensity
       gsap.to(sparkle1Ref.current, {
-        opacity: 0.3,
-        scale: 1.5,
-        rotation: 180,
-        duration: 1.5,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-
-      gsap.to(sparkle2Ref.current, {
         opacity: 0.4,
-        scale: 1.3,
-        rotation: -180,
+        scale: 1.2,
+        rotation: 90,
         duration: 2,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
       });
 
-      // Accent line pulse
+      gsap.to(sparkle2Ref.current, {
+        opacity: 0.5,
+        scale: 1.15,
+        rotation: -90,
+        duration: 2.5,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+
+      // Accent line subtle pulse
       gsap.to(accentLineRef.current, {
-        scaleY: 1.3,
-        opacity: 0.7,
-        duration: 1.8,
+        scaleY: 1.15,
+        opacity: 0.8,
+        duration: 2,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
@@ -212,18 +211,18 @@ export default function AnimatedLogo() {
         ease: "power2.out",
       });
       
+      // Clean scale effect without rotation
       gsap.to(letterSRef.current, {
-        scale: 1.15,
-        rotation: 10,
+        scale: 1.12,
         duration: 0.3,
-        ease: "back.out(2)",
+        ease: "back.out(1.7)",
       });
 
       gsap.to([sparkle1Ref.current, sparkle2Ref.current], {
-        scale: 2,
+        scale: 1.5,
         opacity: 1,
         duration: 0.3,
-        ease: "back.out(2)",
+        ease: "back.out(1.7)",
       });
     }
   };
